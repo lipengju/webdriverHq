@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<DataDriven>
+    <test>测试百度登录</test>
+    <failLogin1 username="" password="" expected="请您填写手机/邮箱/用户名" />
+    <failLogin2 username="admin" password="" expected="请您填写密码" />
+    <failLogin3 username="admin" password="admin" expected="请输入验证码" />
+</DataDriven>
