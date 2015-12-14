@@ -4,4 +4,5 @@
     <failLogin1 username="" password="" expected="请您填写手机/邮箱/用户名" />
     <failLogin2 username="admin" password="" expected="请您填写密码" />
     <failLogin3 username="admin" password="admin" expected="请输入验证码" />
+    <login username="Baidu account" password="Baidu account password" niCheng="nickname"></login>
 </DataDriven>

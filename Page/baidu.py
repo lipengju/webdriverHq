@@ -1,47 +1,49 @@
 #coding:utf-8
 
 from selenium import webdriver
-from selenium.webdriver.common.action_chains import ActionChains
-import time as t
-
-#等待方法
-def wait():
-	t.sleep(2)
-
-def clickLogin(driver):
-	wait()
-	driver.find_element_by_id('u1').find_element_by_class_name('lb').click()
-
-def typeUsername(driver,username):
-	clickLogin(driver)
-	wait()
-	driver.find_element_by_id('TANGRAM__PSP_8__userName').send_keys(username)
-
-def typePassword(driver,password):
-	clickLogin(driver)
-	wait()
-	driver.find_element_by_id('TANGRAM__PSP_8__password').send_keys(password)
-
-def clickButtonLogin(driver):
-	wait()
-	driver.find_element_by_id('TANGRAM__PSP_8__submit').click()
+from selenium.webdriver.common.by import  By
+from BasePage import  Page
+from homePage import  HomePage
 
 
-def getErrorText(driver):
-	wait()
-	return  driver.find_element_by_xpath(".//*[@id='TANGRAM__PSP_8__error']").text
+class BaiduPage(Page):
+	click_loc=(By.XPATH,".//*[@id='u1']/a[7]")
+	userName_loc=(By.ID,'TANGRAM__PSP_8__userName')
+	password_loc=(By.ID,'TANGRAM__PSP_8__password')
+	clickButton_loc=(By.ID,'TANGRAM__PSP_8__submit')
+	error_loc=(By.XPATH,".//*[@id='TANGRAM__PSP_8__error']")
 
-#登录方法
-def login(driver,username,password):
-	clickLogin(driver)
-	typeUsername(driver,username)
-	typePassword(driver,password)
-	clickButtonLogin(driver)
 
-#获取昵称方法
-def getNiCheng(driver):
-	wait()
-	return driver.find_element_by_css_selector("#s_username_top > span").text
+	def click(self):
+		self.wait
+		self.find_element(*self.click_loc).click()
+
+	def getUserTextField(self,username):
+		self.wait
+		self.find_element(*self.userName_loc).send_keys(username)
+
+	def getPasswordField(self,password):
+		self.wait
+		self.find_element(*self.password_loc).send_keys(password)
+
+	def getSubmitButton(self):
+		self.wait
+		self.find_element(*self.clickButton_loc).click()
+
+	def getLoginErrorDiv(self):
+		self.wait
+		return self.find_element(*self.error_loc).text
+
+	def login(self,username,password):
+		self.doLogin(username,password)
+		return HomePage(self.driver)
+
+	def doLogin(self,username,password):
+		self.click()
+		self.getUserTextField(username)
+		self.getPasswordField(password)
+		self.getSubmitButton()
+
 
 
 
