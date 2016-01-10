@@ -2,9 +2,9 @@
 
 from selenium import webdriver
 from selenium.webdriver.common.by import  By
-from BasePage import  Page
+from BasePage import  WebUI
 
-class HomePage(Page):
+class HomePage(WebUI):
 	niCheng_loc=(By.CSS_SELECTOR,'.user-name')
 
 	def getNiCheng(self):

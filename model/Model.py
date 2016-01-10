@@ -90,6 +90,8 @@ class SqliteHelper(object):
 			cur.close()
 			conn.close()
 
+
+
 class MySQLHelper(object):
 	def __init__(self):
 		self.__conn=config.conn
@@ -153,3 +155,6 @@ class User(object):
 if __name__=='__main__':
 	per=MySQLHelper()
 	print per.selectMySQL2()
+
+
+

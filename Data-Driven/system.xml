@@ -5,4 +5,6 @@
     <failLogin2 username="admin" password="" expected="请您填写密码" />
     <failLogin3 username="admin" password="admin" expected="请输入验证码" />
     <login username="Baidu account" password="Baidu account password" niCheng="nickname"></login>
+
+    <kb>淘宝账户登录</kb>
 </DataDriven>
