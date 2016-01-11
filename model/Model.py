@@ -3,7 +3,7 @@
 import  os,csv,xlrd
 import  xml.dom.minidom
 import sqlite3
-import  MySQLdb
+# import  MySQLdb
 import  config
 
 
@@ -92,6 +92,7 @@ class SqliteHelper(object):
 
 
 
+'''
 class MySQLHelper(object):
 	def __init__(self):
 		self.__conn=config.conn
@@ -151,10 +152,11 @@ class User(object):
 		sql='select * from account where username=%s and passwd=%s'
 		params=(name,address,)
 		return self.__helper.get_One(sql,params)
-#
+
 if __name__=='__main__':
 	per=MySQLHelper()
 	print per.selectMySQL2()
+'''
 
 
 
