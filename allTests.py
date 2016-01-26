@@ -4,6 +4,7 @@ reload(sys)
 sys.setdefaultencoding('utf-8')
 
 
+
 def suite():
 	dir_case=unittest.defaultTestLoader.discover(
 		'D:/git/python/webdriverHq/TestCase',
