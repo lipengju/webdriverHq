@@ -1,0 +1,21 @@
+21:59:54.936 INFO - Launching Selenium Grid hub
+2016-03-27 21:59:55.817:INFO::main: Logging initialized @1029ms
+21:59:55.827 INFO - Will listen on 4444
+21:59:55.875 INFO - Will listen on 4444
+2016-03-27 21:59:55.877:INFO:osjs.Server:main: jetty-9.2.z-SNAPSHOT
+2016-03-27 21:59:55.900:INFO:osjsh.ContextHandler:main: Started o.s.j.s.ServletContextHandler@2d773b{/,null,AVAILABLE}
+2016-03-27 21:59:55.940:INFO:osjs.ServerConnector:main: Started ServerConnector@12624a8{HTTP/1.1}{0.0.0.0:4444}
+2016-03-27 21:59:55.941:INFO:osjs.Server:main: Started @1153ms
+21:59:55.941 INFO - Nodes should register to http://192.168.1.105:4444/grid/register/
+21:59:55.941 INFO - Selenium Grid hub is up and running
+^C22:01:08.087 INFO - Launching Selenium Grid hub
+2016-03-27 22:01:09.053:INFO::main: Logging initialized @1076ms
+22:01:09.126 INFO - Will listen on 4444
+22:01:09.187 INFO - Will listen on 4444
+2016-03-27 22:01:09.189:INFO:osjs.Server:main: jetty-9.2.z-SNAPSHOT
+2016-03-27 22:01:09.212:INFO:osjsh.ContextHandler:main: Started o.s.j.s.ServletContextHandler@2d773b{/,null,AVAILABLE}
+2016-03-27 22:01:09.250:INFO:osjs.ServerConnector:main: Started ServerConnector@cd23d9{HTTP/1.1}{0.0.0.0:4444}
+2016-03-27 22:01:09.250:INFO:osjs.Server:main: Started @1272ms
+22:01:09.250 INFO - Nodes should register to http://192.168.1.105:4444/grid/register/
+22:01:09.250 INFO - Selenium Grid hub is up and running
+^C

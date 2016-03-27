@@ -1,0 +1,1 @@
+java -jar selenium-server-standalone-2.52.0.jar -role hub>>D:/git/Python/webdriverHq/seleniumGrid2/hubLog.txt 2>&1
