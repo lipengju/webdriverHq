@@ -36,13 +36,13 @@ class WebDdriver(object):
 		except NoSuchElementException,e:
 			print 'Error details :%s'%(e.args[0])
 
+	def getScreenshot(self,name,form='png'):
+		t.sleep(2)
+		self.driver.get_screenshot_as_file('D:/git/Python/webdriverHq/img/'+name+"."+form)
+
 	@property
 	def wait(self):
 		t.sleep(2)
-
-	def getScreenshot(self,name,form='png'):
-		t.sleep(2)
-		self.driver.get_screenshot_as_file('E:/git/localhost/webdriverHq/img/'+name+"."+form)
 
 class WebUI(WebDdriver):
 	def __str__(self):

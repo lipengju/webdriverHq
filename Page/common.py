@@ -4,12 +4,6 @@
 from appium import  webdriver
 import  time as t
 import  os
-import  platform
-import  tempfile
-import  shutil
-import math
-import  operator
-from PIL import  Image
 
 
 class Swipe(object):
@@ -31,7 +25,7 @@ class Swipe(object):
 	@property
 	def set_Left_Right(self):
 		'''
-		:return: 实现从左到右滑动,左滑时X轴起点大于终点
+		:return: 实现从左到右滑动,滑动时X轴起点大于终点
 		'''
 		t.sleep(2)
 		self.driver.swipe(self.width*9/10,self.height/2,self.width/20,self.height/2,0)
@@ -39,26 +33,27 @@ class Swipe(object):
 	@property
 	def set_Right_Left(self):
 		'''
-		:return:实现从右到左滑动,左滑时X轴起点小于终点
+		:return:实现从右到左滑动,滑动时X轴起点小于终点
 		'''
 		t.sleep(2)
 		self.driver.swipe(self.width/10,self.height/2,self.width*9/10,self.height/2,0)
 
 	@property
+	def set_Up_Down(self):
+		'''
+		:return: 实现从上往下滑动,滑动时Y轴起点起点大于终点
+		'''
+		t.sleep(2)
+		self.driver.swipe(self.width/2,self.height*9/10,self.width/2,self.height/20,0)
+
+	@property
 	def set_Down_Up(self):
 		'''
-		:return: 实现从下往上滑动,左滑时Y轴起点小于终点
+		:return: 实现从下往上滑动,滑动时Y轴起点小于终点
 		'''
 		t.sleep(2)
 		self.driver.swipe(self.width/2,self.height/20,self.width/2,self.height*9/10,0)
 
-	@property
-	def set_Up_Down(self):
-		'''
-		:return: 实现从上往下滑动,左滑时Y轴起点起点大于终点
-		'''
-		t.sleep(2)
-		self.driver.swipe(self.width/2,self.height*9/10,self.width/2,self.height/20,0)
 
 
 
