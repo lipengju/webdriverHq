@@ -3,11 +3,15 @@ import  unittest,os,sys,HTMLTestRunner,time
 reload(sys)
 sys.setdefaultencoding('utf-8')
 
+from model.Model import Config
 
+
+config=Config()
 
 def suite():
 	dir_case=unittest.defaultTestLoader.discover(
-		'D:/git/python/webdriverHq/TestCase',
+		#'D:/git/python/webdriverHq/TestCase',
+		config.data_dirs('TestCase'),
 		pattern='test_*.py',
 		top_level_dir=None
 	)
@@ -21,7 +25,7 @@ def getNowTime():
 
 
 def runAutomation():
-	filename='D:/git/Python/webdriverHq/Report/'+getNowTime()+'TestReport.html'
+	filename=config.data_dirs('Report')+'/'+getNowTime()+'TestReport.html'
 	fp=file(filename,'wb')
 	runner=HTMLTestRunner.HTMLTestRunner(
 		stream=fp,

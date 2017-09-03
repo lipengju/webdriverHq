@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 #coding:utf-8
 
 import  os,csv,xlrd
@@ -6,22 +7,19 @@ import sqlite3
 import  MySQLdb
 import  config
 
-
 class Config(object):
 	def __init__(self):
 		pass
 
-	@staticmethod
-	def data_dirs():
+	def data_dirs(self,filePath):
 		BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 		DATA_DIRS = (
-		os.path.join(BASE_DIR,  'Data-Driven'),
+		os.path.join(BASE_DIR,filePath),
 		)
 		d='/'.join(DATA_DIRS)
 		return d
 
-
-class DataHelper(object):
+class DataHelper(Config):
 	def __init__(self):
 		pass
 
@@ -30,42 +28,51 @@ class DataHelper(object):
 		return list
 
 	def readFile(self,index):
-		f=open(Config.data_dirs()+'/system.txt','r')
+		f=open(self.data_dirs('Data-Driven')+'/system.txt','r')
 		d=f.readlines()
 		f.close()
 		return d[index]
 
 	def readCsv(self,value1,value2):
 		rows=[]
-		data_file=open(Config.data_dirs()+'/system.csv')
+		data_file=open(self.data_dirs('Data-Driven')+'/system.csv')
 		reader=csv.reader(data_file)
 		next(reader,None)
 		for row in reader:
 			rows.append(row)
 		return ''.join(rows[value1][value2]).decode('gb2312')
 
+	# def readCsvs(self):
+	# 	rows=[]
+	# 	with open(Config.data_dirs()+'/system.csv') as f:
+	# 		readers=csv.reader(f,delimiter=',',quotechar='|')
+	# 		next(readers,None)
+	# 		for row in  readers:
+	# 			rows.append(row)
+	# 		return rows
+
 	def readExcel(self,rowValue,colValue):
-		book=xlrd.open_workbook(Config.data_dirs()+'/system.xlsx')
+		book=xlrd.open_workbook(self.data_dirs('Data-Driven')+'/system.xlsx')
 		sheet=book.sheet_by_index(0)
 		return sheet.cell_value(rowValue,colValue)
 
 	def readExcels(self):
 		rows=[]
-		book=xlrd.open_workbook(Config.data_dirs()+'/system.xlsx')
+		book=xlrd.open_workbook(self.data_dirs('Data-Driven')+'/system.xlsx')
 		sheet=book.sheet_by_index(0)
 		for row in range(1,sheet.nrows):
 			rows.append(list(sheet.row_values(row,0,sheet.ncols)))
 		return rows
 
 	def getXmlData(self,value):
-		dom=xml.dom.minidom.parse(Config.data_dirs()+"/system.xml")
+		dom=xml.dom.minidom.parse(self.data_dirs('Data-Driven')+"/system.xml")
 		db=dom.documentElement
 		name=db.getElementsByTagName(value)
 		nameValue=name[0]
 		return nameValue.firstChild.data
 
 	def getXmlUser(self,parent,child):
-		dom=xml.dom.minidom.parse(Config.data_dirs()+"/system.xml")
+		dom=xml.dom.minidom.parse(self.data_dirs('Data-Driven')+"/system.xml")
 		db=dom.documentElement
 		itemlist=db.getElementsByTagName(parent)
 		item=itemlist[0]
@@ -76,7 +83,7 @@ class SqliteHelper(object):
 	def selectSqlite(self,value1,value2):
 		rows=[]
 		try:
-			conn=sqlite3.connect(Config.data_dirs()+'/mydatabase.db')
+			conn=sqlite3.connect(self.data_dirs('Data-Driven')+'/mydatabase.db')
 			cur=conn.cursor()
 			sql="select *  from element"
 			cur.execute(sql)
@@ -89,8 +96,6 @@ class SqliteHelper(object):
 		finally:
 			cur.close()
 			conn.close()
-
-
 
 
 class MySQLHelper(object):
@@ -153,9 +158,6 @@ class User(object):
 		params=(name,address,)
 		return self.__helper.get_One(sql,params)
 
-if __name__=='__main__':
-	per=MySQLHelper()
-	print per.selectMySQL2()
 
 
 

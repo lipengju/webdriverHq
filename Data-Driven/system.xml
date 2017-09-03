@@ -8,4 +8,12 @@
 
     <kb>淘宝账户登录</kb>
     <mai>外卖</mai>
+
+    <!--wordpress参数化的数据-->
+    <wordpress username="admin" passwd="admin"></wordpress>
+    <passwd>错误：admin 的密码不正确。忘记密码了？</passwd>
+    <userDiv>错误：无效用户名。忘记密码？</userDiv>
+    <wen title="automation" content="自动化测试技术"></wen>
+    <exit>您已登出。</exit>
+
 </DataDriven>

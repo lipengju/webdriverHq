@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 #coding:utf-8
 
 from appium import  webdriver
@@ -5,6 +6,7 @@ from selenium import  webdriver
 from selenium.webdriver.support.expected_conditions import NoSuchElementException
 from selenium.webdriver.common.by import  By
 import  time as t
+from model.Model import Config
 
 class Factory(object):
 	def __init__(self,driver):
@@ -38,7 +40,8 @@ class WebDdriver(object):
 
 	def getScreenshot(self,name,form='png'):
 		t.sleep(2)
-		self.driver.get_screenshot_as_file('D:/git/Python/webdriverHq/img/'+name+"."+form)
+		config=Config()
+		self.driver.get_screenshot_as_file(config.data_dirs('img')+'/'+name+"."+form)
 
 	@property
 	def wait(self):
